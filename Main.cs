@@ -26,6 +26,11 @@ public class Main : MonoBehaviour
         GameObject go = Instantiate(prefabEnemies[ndx]);
         Vector3 pos = Vector3.zero;
         float xMin = Utils.camBounds.min.x + enemySpawnPadding;
+        float xMax = Utils.camBounds.max.x + enemySpawnPadding;
+        pos.x = Random.Range( xMin, xMax );
+        pos.y = Utils.camBounds.max.y + enemySpawnPadding;
+        go.transform.position = pos;
+        Invoke("SpawnEnemy", enemySpawnRate);
     }
 
     // Update is called once per frame
